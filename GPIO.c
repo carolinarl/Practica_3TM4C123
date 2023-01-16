@@ -5,16 +5,15 @@
 
 extern void Configurar_GPIO(void)
 {
-    SYSCTL->RCGCGPIO |=(1<<4); // 1) Activación del reloj
-    GPIOE->LOCK= 0x4C4F434B;   // 2) unlock GPIO Port F
-    GPIOE->CR = 0xF0; 
-    // Ej. GPIOF->CR = 0x1F; // Permite cambios del puerto PF4 al 0.
-    GPIOE->AMSEL = 0x00;        // 3) disable analog on PE
-    GPIOE->PCTL = 0x00000000;   // 4) PCTL GPIO on PF4-0
-    GPIOE->DIR = 0x10; // 5) PE4 in, PF5 out
-    GPIOE->AFSEL = 0x30; // 6) Habilitación de funciones alternativas en PE4, PE5
-    GPIOE->PUR = 0x30;          // enable pull-up on PE4 and PE5
-    GPIOE->DEN = (1<<4) | (1<<5);          // 7) enable digital I/O on PE4 y PE5
+    SYSCTL->RCGCGPIO |=(1<<5); 
+    GPIOF->LOCK= 0x4C4F434B;   // 2) unlock GPIO Port F
+    GPIOF->CR = 0x1F;           // allow changes to PF4-0
+    GPIOF->AMSEL = 0x00;        // 3) disable analog on PF
+    GPIOF->PCTL = 0x00000000;   // 4) PCTL GPIO on PF4-0
+    GPIOF->DIR = 0x0E;          // 5) PF4,PF0 in, PF3-1 out
+    GPIOF->AFSEL = 0x00;        // 6) disable alt funct on PF7-0
+    GPIOF->PUR = 0x11;          // enable pull-up on PF0 and PF4
+    GPIOF->DEN = 0x1F;          // 7) enable digital I/O on PF4-0
 }
 
 extern void Delay(void)
@@ -25,4 +24,4 @@ extern void Delay(void)
   {
 		time--;
   }
-} 
+}
