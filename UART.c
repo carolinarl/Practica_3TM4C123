@@ -79,6 +79,7 @@ extern void printString(char* string)
 
 
 extern int readString(char delimitador, char *string)
+// Se lee una cadena y regresa un apuntador de caracter char
 {
    int i = 0;
    char c = readChar();
