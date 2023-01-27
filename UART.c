@@ -35,13 +35,13 @@ extern void Configurar_UART5(void)
     // UART Fractional Baud-Rate Divisor (UARTFBRD) pag.915
     /*
     BRD = BRDI + BRDF = UARTSysClk / (ClkDiv * Baud Rate)
-    BRD = 40,000,000 / (16 * 28800) = 86.80555556
+    BRD = 25,000,000 / (16 * 28800) = 54.25347
     
     UARTFBRD[DIVFRAC] = integer(BRDF * 64 + 0.5)
-    UARTFBRD[DIVFRAC] = integer(0.80555556 * 64 + 0.5) = 52.05555556 = 52
+    UARTFBRD[DIVFRAC] = integer(0.25347 * 64 + 0.5) = 16.72
     */
-    UART5->IBRD = 86;
-    UART5->FBRD = 52;
+    UART5->IBRD = 54;
+    UART5->FBRD = 16;
     //  UART Line Control (UARTLCRH) pag.916
     UART5->LCRH = (0x3<<5)|(1<<4);
     //  UART Clock Configuration(UARTCC) pag.939

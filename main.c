@@ -5,7 +5,7 @@ int main(void)
     uint16_t valor = 0;
     char c='5';
     //char b='a';
-    Configurar_PLL(_40MHZ);  //Configuracion del reloj
+    Configurar_PLL(_25MHZ);  //Configuracion del reloj
     Configurar_UART5();  //Configuración del UART
     //-fclk 40MHZ Baud-rate 28800
     Configurar_GPIO();
@@ -24,6 +24,7 @@ int main(void)
     //printString("\n");
    // char *arr = readString(',');
    // printString(&arr[0]);
+   
    /*
     while(1)
     {
@@ -72,5 +73,6 @@ int main(void)
         printString(string_num);           //Escritura de la cadena final "string_num"
     }
     
+
     
 }
